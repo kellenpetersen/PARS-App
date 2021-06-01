@@ -50,15 +50,15 @@ height = col1.slider('Height (inches)', 36, 96, 36)
 weight = col1.slider('Weight (lbs)', 51, 350, 51)
 bmi = 703*float(weight)/float(height)**2
 
-check_adl = col1.checkbox('ADL Score is Known')
-if check_adl:
-    adl = col1.slider('ADL Score (Select -1 if unknown)', -1, 100, -1)
-else:
-    adl = -1
+#check_adl = col1.checkbox('ADL Score is Known')
+#if check_adl:
+#    adl = col1.slider('ADL Score (Select -1 if unknown)', -1, 100, -1)
+#else:
+#    adl = -1
 
 check_fr = col1.checkbox('Free Recall Score is Known')
 if check_fr:
-    fr = col1.slider('Free Recall Score (Select -1 if unknown)', -1, 100, -1)
+    fr = col1.slider('Free Recall Score (Select -1 if unknown)', 0, 48, 0)
 else:
     fr = -1
 
@@ -127,11 +127,11 @@ elif f < 31:
 else:
     FR = [0,0,0,1]
 
-ad = float(adl)
-if ad < 64:
-    AD = [1,0]
-else:
-    AD = [0,1]
+#ad = float(adl)
+#if ad < 64:
+#    AD = [1,0]
+#else:
+#    AD = [0,1]
 
 if apoe4 in ['0','1','2']:
     ap = float(apoe4)
@@ -158,24 +158,24 @@ adl_points = [0,0]
 # Determine model and assign points
 if apoe4 in ['0','1','2']:
     # Model 4
-    model = 'Model 4 chosen with variables: Age, BMI, and APOE4 status.'
+    model = 'Model 3 chosen with variables: Age, BMI, and APOE4 status.'
     age_points = [0,10,20,22]
     bmi_points = [5,0,2]
     apo_points = [0,39,73]
 elif fr > -0.5:
     # Model 3
-    model = 'Model 3 chosen with variables: Age, BMI, Family History, and Free Recall.'
+    model = 'Model 2 chosen with variables: Age, BMI, Family History, and Free Recall.'
     age_points = [0,13,26,31]
     bmi_points = [5,0,1]
     fh_points = [0,14,38]
     fr_points = [26,22,10,0]
-elif adl > -0.5:
-    # Model 2
-    model = 'Model 2 chosen with variables: Age, BMI, Family History, and ADL Score.'
-    age_points = [0,17,33,38]
-    bmi_points = [5,0,1]
-    fh_points = [0,17,43]
-    adl_points = [14,0]
+#elif adl > -0.5:
+#    # Model 2
+#    model = 'Model 2 chosen with variables: Age, BMI, Family History, and ADL Score.'
+#    age_points = [0,17,33,38]
+#    bmi_points = [5,0,1]
+#    fh_points = [0,17,43]
+#    adl_points = [14,0]
 else:
     # Model 1
     model = 'Model 1 chosen with variables: Age, BMI, and Family History.'
@@ -190,7 +190,7 @@ score = score + np.dot(B, bmi_points)
 score = score + np.dot(FH, fh_points)
 score = score + np.dot(APO, apo_points)
 score = score + np.dot(FR, fr_points)
-score = score + np.dot(AD, adl_points)
+#score = score + np.dot(AD, adl_points)
 
 #---------------------------------#
 #Output to screen
