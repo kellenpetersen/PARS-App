@@ -51,21 +51,33 @@ weight = col1.slider('Weight (lbs)', 51, 350, 51)
 bmi = 703*float(weight)/float(height)**2
 
 
-
-check_apo = col1.checkbox('# of e4 alleles is  not known')
-if check_apo:
-    apoe4 = 'Unknown'
+apoe4 = col1.radio('APOE4 (# of e4 alleles)', ['0','1','2','Unknown'])
+famhist = 'Unknown'
+fr = -1
+if apoe4 == 'Unknown':
     famhist = col1.radio('# of Parents with Dementia', ['0','1','2'])
 
-    check_fr = col1.checkbox('Free Recall Score is not known')
+    check_fr = col1.checkbox('Free Recall Score is known')
     if check_fr:
-        fr = -1
-    else:
         fr = col1.slider('Free Recall Score', 0, 48, 0)
-else:
-    apoe4 = col1.radio('APOE4 (# of e4 alleles)', ['0','1','2'])
-    famhist = 'Unknown'
-    fr = -1
+
+
+
+
+#check_apo = col1.checkbox('# of e4 alleles is  not known')
+#if check_apo:
+#    apoe4 = 'Unknown'
+#    famhist = col1.radio('# of Parents with Dementia', ['0','1','2'])
+#
+#    check_fr = col1.checkbox('Free Recall Score is not known')
+#    if check_fr:
+#        fr = -1
+#    else:
+#        fr = col1.slider('Free Recall Score', 0, 48, 0)
+#else:
+#    apoe4 = col1.radio('APOE4 (# of e4 alleles)', ['0','1','2'])
+#    famhist = 'Unknown'
+#    fr = -1
 
 
 
