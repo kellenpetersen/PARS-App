@@ -22,7 +22,7 @@ st.set_page_config(layout="wide")
 # Title
 image = Image.open('logo.jpg')
 st.image(image, width = 500)
-st.title('Risk Score')
+st.title('PARS (Positive Aβ Risk Score) Calculator')
 st.markdown("""
 **Description:** Maximum score of 100 points.
 """)
@@ -50,36 +50,34 @@ height = col1.slider('Height (inches)', 36, 96, 36)
 weight = col1.slider('Weight (lbs)', 51, 350, 51)
 bmi = 703*float(weight)/float(height)**2
 
-#check_adl = col1.checkbox('ADL Score is Known')
-#if check_adl:
-#    adl = col1.slider('ADL Score (Select -1 if unknown)', -1, 100, -1)
-#else:
-#    adl = -1
 
-check_fr = col1.checkbox('Free Recall Score is Known')
-if check_fr:
-    fr = col1.slider('Free Recall Score (Select -1 if unknown)', 0, 48, 0)
+
+check_apo = col1.checkbox('# of e4 alleles is  not known')
+if check_apo:
+    apoe4 = 'Unknown'
+    famhist = col1.radio('# of Parents with Dementia', ['0','1','2'])
+
+    check_fr = col1.checkbox('Free Recall Score is not known')
+    if check_fr:
+        fr = -1
+    else:
+        fr = col1.slider('Free Recall Score', 0, 48, 0)
 else:
+    apoe4 = col1.radio('APOE4 (# of e4 alleles)', ['0','1','2'])
+    famhist = 'Unknown'
     fr = -1
 
 
-check_apo = col1.checkbox('# of e4 alleles is Known')
-if check_apo:
-    apoe4 = col1.radio('APOE4 (# of e4 alleles)', ['0','1','2'])
-    famhist = 'Unknown'
-else:
-    #col2.write('INCOMPLETE: If APOE4 status is unknown then Family History is required')
-    apoe4 = 'Unknown'
-    famhist = col1.radio('# of Parents with Dementia', ['0','1','2'])
-    #check_fh = col1.checkbox('# of Parents with Dementia is Known')
-    #if check_fh:
-    #    famhist = col1.radio('# of Parents with Dementia', ['0','1','2'])
-    #else:
-    #    famhist = 'Unknown'
 
 
-#famhist = col1.selectbox('# of Parents with Dementia', ['Unknown','0','1','2'])
-#apoe4 = col1.selectbox('APOE4 (# of e4 alleles)', ['Unknown','0','1','2'])
+
+
+
+
+
+
+
+
 
 #---------------------------------#
 # Page contents
