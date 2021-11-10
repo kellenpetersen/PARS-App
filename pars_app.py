@@ -29,9 +29,9 @@ st.markdown("""
 
 #---------------------------------#
 # About
-expander_bar = st.beta_expander("About")
-expander_bar.markdown("""
-""")
+#expander_bar = st.beta_expander("About")
+#expander_bar.markdown("""
+#""")
 
 #---------------------------------#
 # Page layout (continued)
