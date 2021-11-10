@@ -20,8 +20,8 @@ st.set_page_config(layout="wide")
 
 #---------------------------------#
 # Title
-image = Image.open('logo.jpg')
-st.image(image, width = 500)
+# image = Image.open('logo.jpg')
+# st.image(image, width = 500)
 st.title('PARS (Positive Aβ Risk Score)')
 st.markdown("""
 **Description:** Maximum score of 100 points.
